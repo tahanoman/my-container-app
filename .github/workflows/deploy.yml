@@ -26,9 +26,9 @@ jobs:
           docker build -t ${{ secrets.CONTAINER_REGISTRY }}/my-container-app:latest .
           docker push ${{ secrets.CONTAINER_REGISTRY }}/my-container-app:latest
 
-      - name: Deploy to Azure Container Apps
+      - name: Deploy to Azure Container Apps (Update Existing)
         run: |
-          az containerapp set \
+          az containerapp update \
             --name ${{ secrets.CONTAINER_APP_NAME }} \
             --resource-group ${{ secrets.RESOURCE_GROUP }} \
             --image ${{ secrets.CONTAINER_REGISTRY }}/my-container-app:latest
